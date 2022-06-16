@@ -17,12 +17,7 @@ export class FormsComponent implements OnInit {
 
 
   crearPersona(){
-    let persona = {
-      "id": this.id,
-      "nombre": this.nombre,
-      "apellido": this.apellido,
-      "edad": this.edad
-    }
+    let persona = new Persona(this.id, this.nombre, this.apellido, this.edad)
     this.service.crearPersona(persona)
   }
 
