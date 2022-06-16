@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Persona } from 'src/app/persona';
 import { PersonasService } from 'src/app/Services/personas.service';
 
 @Component({
@@ -14,8 +15,27 @@ export class FormsComponent implements OnInit {
   edad!:number
   data:any
 
+
+  crearPersona(){
+    let persona = {
+      "id": this.id,
+      "nombre": this.nombre,
+      "apellido": this.apellido,
+      "edad": this.edad
+    }
+    this.service.crearPersona(persona)
+  }
+
   traerPersona(){
     return  console.log(this.data);
+  }
+
+  borrarPersona(){
+
+  }
+
+  actualizarPersona(){
+
   }
 
 
