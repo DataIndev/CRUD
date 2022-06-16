@@ -24,18 +24,7 @@ export class PersonasService {
 
   crearPersona(persona: any){
     let personaNueva = JSON.stringify(persona)
-    console.log(personaNueva);
-    this.http.post<any>(`${this.url}crear/`, {body: personaNueva}, {headers: this.headers}).subscribe(
-      (val) => {
-          console.log("POST call successful value returned in body", 
-                      val);
-      },
-      response => {
-          console.log("POST call in error", response);
-      },
-      () => {
-          console.log("The POST observable is now completed.");
-      });
+    this.http.post<any>(`${this.url}crear/`, personaNueva)
   }
 
   
