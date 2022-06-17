@@ -1,32 +1,43 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IPersona } from '../Interface/iPersona';
 import { Persona } from '../persona';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PersonasService {
-  usuario!: Persona;
+  //URL
 
-  url = "http://localhost:8080/personas/"
+  url = 'http://localhost:8080/personas/';
 
   // Headers para POST, PUT Y DELETE.
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*' });
+    'Access-Control-Allow-Origin': '*',
+  });
+
+  data:any
 
   constructor(private http: HttpClient) {}
 
-  traerPersona(){
+  traerPersona() {
     return this.http.get(`${this.url}traer`)
   }
 
-  crearPersona(persona: any){
-    let personaNueva = JSON.stringify(persona)
-    this.http.post<any>(`${this.url}crear/`, personaNueva)
+  borrarPersona(id: number) {
+    console.log(id);
+    return this.http.delete(`${this.url}borrar/${id}`, {
+      headers: this.headers,
+      responseType: 'text',
+    });
   }
 
-  
-  
+  crearPersona(persona: Persona) {
+    return this.http.post(this.url + 'crear', persona, {
+      headers: this.headers,
+      responseType: 'text',
+    });
+  }
 }

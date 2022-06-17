@@ -5,44 +5,35 @@ import { PersonasService } from 'src/app/Services/personas.service';
 @Component({
   selector: 'app-forms',
   templateUrl: './forms.component.html',
-  styleUrls: ['./forms.component.css']
+  styleUrls: ['./forms.component.css'],
 })
 export class FormsComponent implements OnInit {
+  id!: number;
+  nombre!: string;
+  apellido!: string;
+  edad!: number;
+  data: any;
 
-  id!:number
-  nombre!:string
-  apellido!:string
-  edad!:number
-  data:any
-
-
-  crearPersona(){
-    let persona = new Persona(this.id, this.nombre, this.apellido, this.edad)
-    this.service.crearPersona(persona)
+  crearPersona() {
+    let persona = new Persona(this.id, this.nombre, this.apellido, this.edad);
+    this.service.crearPersona(persona).subscribe({
+      complete: () => console.log('DONE'),
+    });
   }
 
-  traerPersona(){
-    return  console.log(this.data);
+  traerPersona() {
+    return console.log(this.data);
   }
 
-  borrarPersona(){
-
+  borrarPersona() {
+    this.service.borrarPersona(this.id).subscribe({
+      complete: () => console.log('DONE'),
+    });
   }
 
-  actualizarPersona(){
+  actualizarPersona() {}
 
-  }
+  constructor(private service: PersonasService) {}
 
-
-  constructor(private service:PersonasService) { }
-
-
-  ngOnInit(): void {
-    this.service.traerPersona().subscribe((response) => {
-      this.data = response
-      
-    })
-    
-  }
-
+  ngOnInit(): void {}
 }

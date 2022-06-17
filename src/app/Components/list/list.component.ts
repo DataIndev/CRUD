@@ -1,22 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PersonasService } from 'src/app/Services/personas.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
+  constructor(private service: PersonasService) {}
 
-  constructor(private service:PersonasService) { }
-
-  data:any
+  data: any;
 
   ngOnInit(): void {
     this.service.traerPersona().subscribe((data) => {
-      this.data = data
-      
-    })
+      this.data = data;
+      console.log(this.data);
+    });
   }
-
 }
