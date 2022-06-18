@@ -15,23 +15,16 @@ export class FormsComponent implements OnInit {
   data: any;
 
   crearPersona() {
-    let persona = new Persona(this.id, this.nombre, this.apellido, this.edad);
-    this.service.crearPersona(persona).subscribe({
-      complete: () => console.log('DONE'),
-    });
+    this.service
+      .crearPersona(new Persona(this.id, this.nombre, this.apellido, this.edad))
+      .subscribe(() => this.traerDatos());
   }
 
-  traerPersona() {
-    return console.log(this.data);
+  traerDatos() {
+    this.service
+      .traerPersona()
+      .subscribe((data) => this.service.mensaje.emit(data));
   }
-
-  borrarPersona() {
-    this.service.borrarPersona(this.id).subscribe({
-      complete: () => console.log('DONE'),
-    });
-  }
-
-  actualizarPersona() {}
 
   constructor(private service: PersonasService) {}
 

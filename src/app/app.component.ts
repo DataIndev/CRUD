@@ -9,10 +9,11 @@ import { PersonasService } from './Services/personas.service';
 export class AppComponent implements OnInit {
   title = 'CRUD - Sistema de Prueba';
 
-  constructor(private service:PersonasService) { }
+  constructor() { }
 
 
   ngOnInit(): void {
+    
 
   }
 }

@@ -1,5 +1,5 @@
 <form action="">
-    <div class="row mt-2">
+    <div class="row mt-2" hidden>
         <label for="" class="form-label col-md-1">ID</label>
         <div class="col-md-4">
             <input type="number" name="text" id="" class="form-control" placeholder="Id" [(ngModel)]="id">
@@ -24,7 +24,4 @@
         </div>
     </div>
     <button type="submit" class="btn btn-outline-primary m-1" (click)="crearPersona()">Crear Persona</button>
-    <button type="submit" class="btn btn-outline-danger m-1" (click)="borrarPersona()">Borrar Persona</button>
-    <button type="submit" class="btn btn-outline-success m-1" (click)="actualizarPersona()">Actualizar Datos</button>
-    <button type="submit" class="btn btn-outline-warning m-1" (click)="traerPersona()">Mostrar Personas</button>
 </form>

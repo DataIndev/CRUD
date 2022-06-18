@@ -1,7 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { IPersona } from '../Interface/iPersona';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Persona } from '../persona';
 
 @Injectable({
@@ -18,26 +16,22 @@ export class PersonasService {
     'Access-Control-Allow-Origin': '*',
   });
 
-  data:any
-
   constructor(private http: HttpClient) {}
 
-  traerPersona() {
-    return this.http.get(`${this.url}traer`)
-  }
+  //EMITTER
+  mensaje = new EventEmitter<any>();
 
-  borrarPersona(id: number) {
-    console.log(id);
-    return this.http.delete(`${this.url}borrar/${id}`, {
-      headers: this.headers,
-      responseType: 'text',
-    });
-  }
-
+  //CREAR PERSSONA
   crearPersona(persona: Persona) {
-    return this.http.post(this.url + 'crear', persona, {
-      headers: this.headers,
-      responseType: 'text',
-    });
+    return this.http
+      .post(this.url + 'crear', persona, {
+        headers: this.headers,
+        responseType: 'text',
+      })
   }
+
+    //TRAER PERSSONA
+    traerPersona() {
+      return this.http.get(`${this.url}traer`);
+    }
 }

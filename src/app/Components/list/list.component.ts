@@ -7,14 +7,21 @@ import { PersonasService } from 'src/app/Services/personas.service';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  constructor(private service: PersonasService) {}
-
   data: any;
 
-  ngOnInit(): void {
+  constructor(private service: PersonasService) {
+    console.log("Component List initialize constructor");
     this.service.traerPersona().subscribe((data) => {
       this.data = data;
-      console.log(this.data);
     });
+
+  }
+
+  ngOnInit(): void {
+    console.log("Component List initialize ngOnInit");
+    this.service.mensaje.subscribe((data) => {
+      this.data = data;
+    });
+
   }
 }
