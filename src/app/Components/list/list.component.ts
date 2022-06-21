@@ -14,15 +14,17 @@ export class ListComponent implements OnInit {
   faTrash = faTrash
 
   constructor(private service: PersonasService) {
-    console.log("Component List initialize constructor");
     this.service.traerPersona().subscribe((data) => {
       this.data = data;
     });
+  }
 
+  borrarPersona(element: number){
+    console.log("Hola "+element);
+    this.service.borrarPersona(element).subscribe((data) => {next: "Borrado"})
   }
 
   ngOnInit(): void {
-    console.log("Component List initialize ngOnInit");
     this.service.mensaje.subscribe((data) => {
       this.data = data;
     });

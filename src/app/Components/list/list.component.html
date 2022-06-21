@@ -20,8 +20,8 @@
                 <th scope="row">
                     <button class="btn btn-sm btn-success mx-1 px-1">
             <fa-icon [icon]="faPenToSquare"></fa-icon></button
-          ><button class="btn btn-sm btn-danger mx-1 px-1">
-            <fa-icon [icon]="faTrash"></fa-icon>
+          ><button class="btn btn-sm btn-danger mx-1 px-1" (click)="borrarPersona(element.id)">
+            <fa-icon [icon]="faTrash" ></fa-icon>
           </button>
                 </th>
             </tr>

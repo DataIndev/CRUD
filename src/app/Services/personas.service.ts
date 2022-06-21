@@ -34,4 +34,8 @@ export class PersonasService {
     traerPersona() {
       return this.http.get(`${this.url}traer`);
     }
+
+    borrarPersona(element: number){
+      return this.http.delete(`${this.url}borrar/${element}`, {headers: this.headers, responseType: 'text'})
+    }
 }
