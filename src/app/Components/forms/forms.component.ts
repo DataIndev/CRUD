@@ -17,13 +17,11 @@ export class FormsComponent implements OnInit {
   crearPersona() {
     this.service
       .crearPersona(new Persona(this.id, this.nombre, this.apellido, this.edad))
-      .subscribe(() => this.traerDatos());
-  }
-
-  traerDatos() {
-    this.service
-      .traerPersona()
-      .subscribe((data) => this.service.mensaje.emit(data));
+      .subscribe(() =>
+        this.service.traerPersona().subscribe((data) => {
+          this.service.mensaje.emit(data);
+        })
+      );
   }
 
   constructor(private service: PersonasService) {}

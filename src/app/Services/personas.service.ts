@@ -23,19 +23,21 @@ export class PersonasService {
 
   //CREAR PERSSONA
   crearPersona(persona: Persona) {
-    return this.http
-      .post(this.url + 'crear', persona, {
-        headers: this.headers,
-        responseType: 'text',
-      })
+    return this.http.post(this.url + 'crear', persona, {
+      headers: this.headers,
+      responseType: 'text',
+    });
   }
 
-    //TRAER PERSSONA
-    traerPersona() {
-      return this.http.get(`${this.url}traer`);
-    }
-
-    borrarPersona(element: number){
-      return this.http.delete(`${this.url}borrar/${element}`, {headers: this.headers, responseType: 'text'})
-    }
+  //TRAER PERSONA
+  traerPersona() {
+    return this.http.get(`${this.url}traer`);
+  }
+  //BORRAR PERSONA
+  borrarPersona(element: number) {
+    return this.http.delete(`${this.url}borrar/${element}`, {
+      headers: this.headers,
+      responseType: 'text',
+    });
+  }
 }
