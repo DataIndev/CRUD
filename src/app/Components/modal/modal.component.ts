@@ -9,12 +9,24 @@ import { PersonasService } from 'src/app/Services/personas.service';
 })
 export class ModalComponent implements OnInit {
 
-  @Input() element!: Persona
+  nombre!: string
+  apellido!:string
+  edad!: number
+  id!:number
 
-  constructor(private service: PersonasService) { }
+  constructor(private service: PersonasService) { 
+    this.service.modal.subscribe((data) => {
+      this.nombre = data.nombre
+      this.apellido = data.apellido
+      this.edad = data.edad
+      this.id = data.id
+    })
+    
+  }
 
 
   ngOnInit(): void {
+
   }
 
 }
