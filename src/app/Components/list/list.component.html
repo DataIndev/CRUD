@@ -1,6 +1,25 @@
 <div>
     <p>Lista de personas</p>
-    <div *ngFor="let element of data; let indice=index">
-        <p>ID: {{element.id}} | Nombre: {{element.nombre}} | Apellido: {{element.apellido}} | Edad: {{element.edad}}</p>
-    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr class="table-dark">
+                <th scope="col">#ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Age</th>
+                <th scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let element of data; let indice = index">
+                <th scope="row">{{element.id}}</th>
+                <th scope="row">{{element.nombre}}</th>
+                <th scope="row">{{element.apellido}}</th>
+                <th scope="row">{{element.edad}}</th>
+                <th scope="row"><button class="btn btn-sm btn-success mx-1 px-1">+</button><button class="btn btn-sm btn-danger mx-1 px-1">-</button></th>
+            </tr>
+        </tbody>
+    </table>
 </div>
