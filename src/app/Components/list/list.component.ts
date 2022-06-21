@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PersonasService } from 'src/app/Services/personas.service';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Persona } from 'src/app/persona';
 
 @Component({
   selector: 'app-list',
@@ -25,6 +26,11 @@ export class ListComponent implements OnInit {
       });
     });
   }
+
+  mandarDataModal(element: Persona){
+    this.service.modal.emit(element)
+  }
+
 
   ngOnInit(): void {
     this.service.mensaje.subscribe((data) => {

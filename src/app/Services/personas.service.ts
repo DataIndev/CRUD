@@ -20,6 +20,7 @@ export class PersonasService {
 
   //EMITTER
   mensaje = new EventEmitter<any>();
+  modal = new EventEmitter<any>();
 
   //CREAR PERSSONA
   crearPersona(persona: Persona) {
