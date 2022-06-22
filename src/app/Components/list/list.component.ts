@@ -27,8 +27,7 @@ export class ListComponent implements OnInit {
     });
   }
 
-  mandarDataModal(element: Persona){
-    console.log(element);
+  actualizarPersona(element: Persona){
     this.service.modal.emit(element)
   }
 
