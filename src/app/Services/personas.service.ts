@@ -41,4 +41,12 @@ export class PersonasService {
       responseType: 'text',
     });
   }
+
+  //EDITAR PERSONA
+  editarPersona(id: number, nombre: string, apellido: string, edad: number) {
+    return this.http.put(`${this.url}editar/${id}?nombre=${nombre}&apellido=${apellido}&edad=${edad}`, {
+      headers: this.headers,
+      responseType: 'text',
+    });
+  }
 }

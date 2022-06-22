@@ -13,6 +13,11 @@ export class ModalComponent implements OnInit {
   apellido!:string
   edad!: number
   id!:number
+  data!:Persona
+
+  modalNombre!:string
+  modalApellido!:string
+  modalEdad!:number
 
   constructor(private service: PersonasService) { 
     this.service.modal.subscribe((data) => {
@@ -20,8 +25,17 @@ export class ModalComponent implements OnInit {
       this.apellido = data.apellido
       this.edad = data.edad
       this.id = data.id
+      this.data =  data
     })
     
+  }
+
+  editarPersona(){
+    this.service.editarPersona(this.id,this.modalNombre,this.modalApellido,this.modalEdad).subscribe((data) => {
+      this.service.mensaje.emit(data)     
+      
+    })
+
   }
 
 
