@@ -1,27 +1,27 @@
-<form action="">
+<form novalidate (ngSubmit)="crearPersona()" [formGroup]="user">
     <div class="row mt-2" hidden>
         <label for="" class="form-label col-md-1">ID</label>
         <div class="col-md-4">
-            <input type="number" name="text" id="" class="form-control" placeholder="Id" [(ngModel)]="id">
+            <input type="number" name="text" id="" class="form-control" placeholder="Id" formControlName="id">
         </div>
     </div>
     <div class="row mt-2">
         <label for="" class="form-label col-md-1">First Name</label>
         <div class="col-md-4">
-            <input type="text" name="text" id="" class="form-control" placeholder="firstName" [(ngModel)]="firstName">
+            <input type="text" name="text" id="" class="form-control" placeholder="firstName" formControlName="firstName">
         </div>
     </div>
     <div class="row mt-2">
         <label for="" class="form-label col-md-1">Last Name</label>
         <div class="col-md-4">
-            <input type="text" name="text" id="" class="form-control" placeholder="lastName" [(ngModel)]="lastName">
+            <input type="text" name="text" id="" class="form-control" placeholder="lastName" formControlName="lastName">
         </div>
     </div>
     <div class="row mt-2">
         <label for="" class="form-label col-md-1">Age</label>
         <div class="col-md-4">
-            <input type="number" name="text" id="" class="form-control" placeholder="age" [(ngModel)]="age">
+            <input type="number" name="text" id="" class="form-control" placeholder="age" formControlName="age">
         </div>
     </div>
-    <button type="submit" class="btn btn-outline-primary m-2" (click)="crearPersona()">Create Person</button>
+    <button type="submit" class="btn btn-outline-primary m-2" [disabled]="user.invalid">Create Person</button>
 </form>
