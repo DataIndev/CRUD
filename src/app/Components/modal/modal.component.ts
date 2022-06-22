@@ -28,14 +28,14 @@ export class ModalComponent implements OnInit {
 
   editarPersona() {
     this.service
-      .editarPersona(
+      .updatePerson(
         this.id,
         this.modalNombre,
         this.modalApellido,
         this.modalEdad
       )
       .subscribe(() => {
-        this.service.traerPersona().subscribe((data) => {
+        this.service.getPerson().subscribe((data) => {
           this.service.mensaje.emit(data);
         });
       });

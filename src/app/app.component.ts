@@ -7,7 +7,7 @@ import { PersonasService } from './Services/personas.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  title = 'CRUD - Sistema de Prueba';
+  title = 'CRUD - Test System';
 
   constructor() { }
 

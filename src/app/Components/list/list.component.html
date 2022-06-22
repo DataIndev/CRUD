@@ -1,6 +1,5 @@
 <div>
-    <p>Lista de personas</p>
-
+    <h2>{{titleName}}</h2>
     <table class="table table-striped">
         <thead>
             <tr class="table-dark">
@@ -8,7 +7,7 @@
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">Age</th>
-                <th scope="col"></th>
+                <th scope="col">Options</th>
             </tr>
         </thead>
         <tbody *ngFor="let element of data; let indice = index">
@@ -18,9 +17,9 @@
                 <th scope="row">{{ element.apellido }}</th>
                 <th scope="row">{{ element.edad }}</th>
                 <th scope="row">
-                    <button class="btn btn-sm btn-success mx-1 px-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="actualizarPersona(element)">
+                    <button class="btn btn-sm btn-success mx-1 px-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="updatePerson(element)">
             <fa-icon [icon]="faPenToSquare "></fa-icon></button
-          ><button class="btn btn-sm btn-danger mx-1 px-1" (click)="borrarPersona(element.id) ">
+          ><button class="btn btn-sm btn-danger mx-1 px-1" (click)="deletePerson(element.id) ">
             <fa-icon [icon]="faTrash" ></fa-icon>
           </button>
                 </th>

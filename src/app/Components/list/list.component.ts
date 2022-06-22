@@ -12,22 +12,23 @@ export class ListComponent implements OnInit {
   data: any;
   faPenToSquare = faPenToSquare;
   faTrash = faTrash;
+  titleName: string = "Person List"
 
   constructor(private service: PersonasService) {
-    this.service.traerPersona().subscribe((data) => {
+    this.service.getPerson().subscribe((data) => {
       this.data = data;
     });
   }
 
-  borrarPersona(element: number) {
-    this.service.borrarPersona(element).subscribe((data) => {
-      this.service.traerPersona().subscribe((data) => {
+  deletePerson(element: number) {
+    this.service.deletePerson(element).subscribe((data) => {
+      this.service.getPerson().subscribe((data) => {
         this.data = data;
       });
     });
   }
 
-  actualizarPersona(element: Persona){
+  updatePerson(element: Persona){
     this.service.modal.emit(element)
   }
 

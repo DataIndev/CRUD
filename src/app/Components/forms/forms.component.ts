@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Persona } from 'src/app/persona';
 import { PersonasService } from 'src/app/Services/personas.service';
+import { Validators, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-forms',
@@ -9,16 +10,20 @@ import { PersonasService } from 'src/app/Services/personas.service';
 })
 export class FormsComponent implements OnInit {
   id!: number;
-  nombre!: string;
-  apellido!: string;
-  edad!: number;
+  firstName!: string;
+  lastName!: string;
+  age!: number;
   data: any;
+
+  form = new FormGroup({
+    
+  })
 
   crearPersona() {
     this.service
-      .crearPersona(new Persona(this.id, this.nombre, this.apellido, this.edad))
+      .createPerson(new Persona(this.id, this.firstName, this.lastName, this.age))
       .subscribe(() =>
-        this.service.traerPersona().subscribe((data) => {
+        this.service.getPerson().subscribe((data) => {
           this.service.mensaje.emit(data);
         })
       );
